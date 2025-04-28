@@ -1,10 +1,14 @@
 [
-  {
-    "Tittle:": "Producto 1",
-    "description": "Producto 1 descripcion",
-    "price": 200,
-    "stock": 20,
-    "id": 1
-  }
-
+    {
+        "id": 1,
+        "title":"Camiseta",
+        "price": 15000,
+        "thumbnail": "/img/camiseta.jpg"
+    },
+    {
+        "id": 2,
+        "title":"Short",
+        "price": 10000,
+        "thumbnail": "/img/shorts.jpg"
+    }
 ]
