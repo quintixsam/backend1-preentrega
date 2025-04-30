@@ -38,9 +38,21 @@ io.on("connection", (socket)=> {
 
         io.emit("productAdded", newProduct);
     } catch (error) {
-        console.error("ERROR añadir producto");
+        console.error("ERROR añadir producto", error);
     }
     });
+
+
+//eliminar producto
+
+socket.on("deleteProduct", async(productId) => {
+    try {
+        await productManager.deleteProductById(parseInt(productId));
+        io.emit("productDeleted", productId);
+    } catch (error) {
+        console.error("ERROR al eliminar producto", error.message);
+    }
+});
 
 });
 
