@@ -3,12 +3,16 @@
         "id": 1,
         "title":"Camiseta",
         "price": 15000,
+        "stock": 10,
+        "description": "Camiseta Basic",
         "thumbnail": "/img/camiseta.jpg"
     },
     {
         "id": 2,
         "title":"Short",
         "price": 10000,
+        "stock": 9,
+        "description": "Short",
         "thumbnail": "/img/shorts.jpg"
     }
 ]

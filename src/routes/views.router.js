@@ -3,27 +3,26 @@ import ProductManager from "../ProductManager.js";
 
 const viewsRouter = express.Router();
 
-const productManager = new ProductManager();
-const user = {username: "piepp", isAdmin: true };
+const productManager = new ProductManager("./src/data/products.json");
 
-const middlewareIsAdmin = (req, res, next) => {
-    if(user.isAdmin){
-        next();
-    }else{
-        res.redirect('/error');
-    }
-}
 
 //endpointss
-viewsRouter.get('/', middlewareIsAdmin, (req, res)=>{
-    res.render('home');
+viewsRouter.get('/', async(req, res)=>{
+    try {
+    const products = await productManager.getProducts();
+    res.render('home', { products });
+    }catch(error){
+    res.status(500).send({ message: error.message});
+  }
 });
 
-viewsRouter.get('/dashboard', async(req, res)=>{
-    
+viewsRouter.get('/realTimeProducts', async(req, res)=>{
+    try {
     const products = await productManager.getProducts();
-
-    res.render('dashboard',{ products, user });
+    res.render('realtimeproducts', { products });
+    }catch(error){
+    res.status(500).send({ message: error.message});
+}
 });
 
 export default viewsRouter;

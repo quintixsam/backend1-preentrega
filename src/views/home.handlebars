@@ -1,1 +1,8 @@
-<h1>Saludos Home</h1>
+<div>
+    <h1>Lista de Productos</h1>
+    <ul>
+        {{#each products}}
+        <li>{{this.title}} - {{this.price}}</li>
+        {{/each}}
+    </ul>
+</div>
