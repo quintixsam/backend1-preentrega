@@ -27,12 +27,11 @@ AddProduct = async (newProduct) => {
     const products = JSON.parse(productsJson);
     // Genera un id Unico para el nuevo Producto
     const id = this.generateNewId(products);
-     // Añade el nuevo producto al array, con el id generado
-    products.push({ id, ...newProduct });
-    // Sobreescribe el archivo .Json con la lista actualizada 
+    const productToAdd = { id, ...newProduct };
+    products.push(productToAdd);
     await fs.promises.writeFile(this.path, JSON.stringify(products, null, 2), 'utf-8');
     // Devuelve la lista actualizada de productos
-    return products;
+    return productToAdd;
 
 }
 //Actualiza los datos del producto por su id

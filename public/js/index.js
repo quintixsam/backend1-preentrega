@@ -24,7 +24,7 @@ socket.on("productAdded", (newProduct) => {
 //eliminar
 socket.on("productDeleted", (productId) => {
     const deleteButton = document.querySelector(`button[data-id="${productId}"]`);
-    if (itemToDelete) {
-        itemToDelete.remove();
+    if (deleteButton) {
+        deleteButton.remove();
       }
 });

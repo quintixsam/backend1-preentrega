@@ -14,5 +14,23 @@
     "stock": 9,
     "description": "Short",
     "thumbnail": "/img/shorts.jpg"
+  },
+  {
+    "id": 3,
+    "title": "Zapatillas",
+    "description": "zapatillas blancas",
+    "code": "3",
+    "price": "25000",
+    "stock": "5",
+    "category": "zapas"
+  },
+  {
+    "id": 4,
+    "title": "Hoodie",
+    "description": "hoodie slim fit",
+    "code": "4",
+    "price": "20000",
+    "stock": "2",
+    "category": "hoodies"
   }
 ]
