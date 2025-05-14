@@ -13,6 +13,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+dotenv.config();
 const PORT = 8080;
 
 connectMongoDb();
@@ -29,9 +30,7 @@ app.set('views', './src/views');
 
 //endpoints
 app.use('/', viewsRouter);
-app.use('/api/carts', CartsRouter);
-app.use('/api/products', ProductsRouter);
-
+app.use('/carts', CartsRouter);
 app.use('/products', ProductsRouter);
 
 
@@ -67,6 +66,7 @@ socket.on("deleteProduct", async(productId) => {
     }
 });
 });
+
 
 
 

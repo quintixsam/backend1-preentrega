@@ -50,8 +50,8 @@ try {
         hasNextPage: result.hasNextPage,
         prevPage: result.prevPage,
         nextPage: result.nextPage,
-        prevLink: result.hasPrevPage ? `/products?page=${result.prevPage}&limit=${limit}`: null,
-        nextLink: result.hasNextPage ? `/products?page=${result.nextPage}&limit=${limit}`: null,
+        prevLink: result.hasPrevPage ? `/products/view?page=${result.prevPage}&limit=${limit}` : null,
+        nextLink: result.hasNextPage ? `/products/view?page=${result.nextPage}&limit=${limit}` : null,
     },
     });
 } catch (error) {
