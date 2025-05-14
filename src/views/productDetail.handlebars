@@ -1,0 +1,14 @@
+<div style="max-width: 600px; margin: auto; font-family: sans-serif;">
+<h1>{{product.title}}</h1>
+<img src="{{product.thumbnail}}" alt="Imagen del producto" style="max-width: 100%;">
+<p><strong>Descripción:</strong> {{product.description}}</p>
+<p><strong>Precio:</strong> ${{product.price}}</p>
+<p><strong>Stock:</strong> {{product.stock}}</p>
+<p><strong>Categoría:</strong> {{product.category}}</p>
+
+<form action="/api/carts/{{cartId}}/product/{{product._id}}" method="POST">
+    <button type="submit">Agregar al carrito</button>
+</form>
+
+<a href="/products"> Volver a productos</a>
+</div>

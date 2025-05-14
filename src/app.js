@@ -7,6 +7,7 @@ import CartsRouter from './routes/carts.router.js';
 import viewsRouter from "./routes/views.router.js";
 import Product from "./models/product.model.js";
 import connectMongoDb from "./config/db.js";
+import dotenv from "dotenv";
 
 const app = express();
 const server = http.createServer(app);
@@ -30,6 +31,8 @@ app.set('views', './src/views');
 app.use('/', viewsRouter);
 app.use('/api/carts', CartsRouter);
 app.use('/api/products', ProductsRouter);
+
+app.use('/products', ProductsRouter);
 
 
 //websockets

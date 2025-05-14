@@ -1,8 +1,55 @@
 <div>
-    <h1>Lista de Productos</h1>
-    <ul>
-        {{#each products}}
-        <li>{{this.title}} - {{this.price}}</li>
-        {{/each}}
-    </ul>
+  <h1>Lista de Productos</h1>
+
+  <ul>
+    {{#each products}}
+      <li style="margin-bottom: 1rem;">
+        <h3>{{this.title}}</h3>
+        <p><strong>Descripción:</strong> {{this.description}}</p>
+        <p><strong>Precio:</strong> ${{this.price}}</p>
+        <p><strong>Stock:</strong> {{this.stock}}</p>
+        <p><strong>Categoría:</strong> {{this.category}}</p>
+
+        <a href="/products/view/{{this._id}}">
+          <button>Ver detalle</button>
+        </a>
+
+        <button onclick="addToCart('{{../cartId}}', '{{this._id}}')">Añadir al carrito</button>
+      </li>
+    {{/each}}
+  </ul>
+
+  <div style="margin-top: 2rem;">
+    {{#if pagination.hasPrevPage}}
+      <a href="{{pagination.prevLink}}">Página anterior</a>
+    {{/if}}
+
+    <span style="margin: 0 1rem;">Página {{pagination.page}} de {{pagination.totalPages}}</span>
+
+    {{#if pagination.hasNextPage}}
+      <a href="{{pagination.nextLink}}"> Página siguiente</a>
+    {{/if}}
+  </div>
 </div>
+
+<script>
+  async function addToCart(cartId, productId) {
+    try {
+      const res = await fetch(`/api/carts/${cartId}/product/${productId}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quantity: 1 }) 
+      });
+
+      const data = await res.json();
+      if (data.status === 'success') {
+        alert('Producto añadido al carrito');
+      } else {
+        alert('Error: ' + data.message);
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Error al añadir al carrito');
+    }
+  }
+</script>
